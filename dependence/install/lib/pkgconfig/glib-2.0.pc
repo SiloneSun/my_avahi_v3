@@ -1,0 +1,14 @@
+prefix=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+bindir=${prefix}/bin
+glib_genmarshal=${bindir}/glib-genmarshal
+gobject_query=${bindir}/gobject-query
+glib_mkenums=${bindir}/glib-mkenums
+
+Name: GLib
+Description: C Utility Library
+Version: 2.66.7
+Libs: -L${libdir} -lglib-2.0 -pthread -lm
+Cflags: -I${includedir}/glib-2.0 -pthread -I${libdir}/glib-2.0/include

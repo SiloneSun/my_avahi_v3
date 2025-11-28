@@ -1,0 +1,3 @@
+/* GNU ld script
+ * The MD5 functions are provided by the libmd library. */
+GROUP(/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/lib/ AS_NEEDED(-lmd))

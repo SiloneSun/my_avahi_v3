@@ -1,0 +1,9 @@
+prefix=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.11
+Libs: -L${libdir} -lz
+Cflags: -I${includedir}

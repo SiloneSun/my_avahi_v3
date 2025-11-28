@@ -1,0 +1,17 @@
+[binaries]
+c = '/home/sunxilong/work/disk4T/code/sxw0505/tools/gcc-11.1.0-20210608-sigmastar-glibc-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc'
+cpp = '/home/sunxilong/work/disk4T/code/sxw0505/tools/gcc-11.1.0-20210608-sigmastar-glibc-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-g++'
+ar = '/home/sunxilong/work/disk4T/code/sxw0505/tools/gcc-11.1.0-20210608-sigmastar-glibc-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ar'
+ranlib = '/home/sunxilong/work/disk4T/code/sxw0505/tools/gcc-11.1.0-20210608-sigmastar-glibc-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ranlib'
+pkgconfig = '/home/sunxilong/work/disk4T/code/sxw0505/tools/gcc-11.1.0-20210608-sigmastar-glibc-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-pkg-config'
+strip = '/home/sunxilong/work/disk4T/code/sxw0505/tools/gcc-11.1.0-20210608-sigmastar-glibc-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-strip'
+
+[host_machine]
+system = 'linux'
+cpu_family = 'arm'
+cpu = 'armv7'
+endian = 'little'
+
+[built-in options]
+c_args = ['-fPIC', '-Os', '-I/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/include']  # 包含之前依赖的头文件
+c_link_args = ['-static', '-L/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/lib']       # 链接之前依赖的静态库

@@ -1,0 +1,12 @@
+prefix=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libbsd-ctor
+Description: Automatic constructor functions for libbsd
+Version: 0.11.7
+URL: https://libbsd.freedesktop.org/
+Cflags: -I${includedir}
+Libs: -L${libdir} -Wl,-z,nodlopen -Wl,-u,libbsd_init_func -lbsd-ctor
+Requires: libbsd

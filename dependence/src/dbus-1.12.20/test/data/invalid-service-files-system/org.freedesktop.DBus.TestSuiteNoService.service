@@ -1,0 +1,4 @@
+[D-BUS Service]
+Exec=/home/sunxilong/work/mycode/my_avahi_v3/dependence/src/dbus-1.12.20/test/test-service
+User=anyrandomuser
+

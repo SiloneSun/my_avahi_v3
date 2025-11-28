@@ -1,0 +1,121 @@
+
+
+先编译依赖库，推荐按照如下顺序（因为可能有依赖关系）：
+libdaemon
+expat
+dbus
+glib
+libnl
+
+最后再去编译avahi
+
+
+
+现在我构建了一个新的环境 /home/sunxilong/work/mycode/my_avahi_v3/
+src用来存放avahi源码
+install用来存放交叉编译安装后的文件
+dependence用来存放依赖的库
+    src用来存放库的源码
+    install用来存放交叉编译安装后的库文件
+    include用来存放交叉编译安装后的库的头文件(avahi需要的)
+
+build.sh是最终编译avahi的脚本；
+如果过程中需要编译依赖库，可以在dependence目录下编写相应的编译脚本后编译
+
+用绝对路径，少用或者不用相对路径
+交叉编译工具链路径：/home/sunxilong/work/mycode/my_avahi_v3/toolchain/arm-linux-gnueabihf/bin/
+交叉编译前缀：arm-linux-gnueabihf-
+交叉编译安装路径：/home/sunxilong/work/mycode/my_avahi_v3/install/
+
+
+我最终需要的avahi版本是avahi 0.7
+我需要解决一个在开发板上使用avahi-daemon，但是同一网段的PC端使用avahi-browse -a却无法查看到的问题
+
+开发板的信息是：
+/customer # ifconfig
+eth0      Link encap:Ethernet  HWaddr E2:1B:3F:43:A2:71  
+          inet addr:10.66.32.164  Bcast:10.66.32.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:9761 errors:0 dropped:105 overruns:0 frame:0
+          TX packets:11003 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:5268220 (5.0 MiB)  TX bytes:586556 (572.8 KiB)
+          Interrupt:78 Base address:0xa000 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:1289 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1289 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:389278 (380.1 KiB)  TX bytes:389278 (380.1 KiB)
+
+PC端的信息是：
+sunxilong@Seevision:~/work/mycode/my_avahi_v3$ ifconfig
+docker0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        inet6 fe80::4095:b0ff:fe90:bd83  prefixlen 64  scopeid 0x20<link>
+        ether 42:95:b0:90:bd:83  txqueuelen 0  (以太网)
+        RX packets 247220  bytes 18259910 (18.2 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 301298  bytes 397536777 (397.5 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eno1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.66.32.115  netmask 255.255.255.0  broadcast 10.66.32.255
+        inet6 fe80::7700:38b6:7ba2:9912  prefixlen 64  scopeid 0x20<link>
+        ether 58:11:22:0d:a0:fb  txqueuelen 1000  (以太网)
+        RX packets 40850157  bytes 51217870060 (51.2 GB)
+        RX errors 0  dropped 125159  overruns 0  frame 0
+        TX packets 18944159  bytes 3264145169 (3.2 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 19  memory 0x85500000-85520000  
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (本地环回)
+        RX packets 2560680  bytes 185968430 (185.9 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2560680  bytes 185968430 (185.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth8030405: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::c42f:38ff:fe57:5cc5  prefixlen 64  scopeid 0x20<link>
+        ether c6:2f:38:57:5c:c5  txqueuelen 0  (以太网)
+        RX packets 3  bytes 126 (126.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 9775  bytes 1998521 (1.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth074cee8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::e0b0:23ff:fe79:e1f1  prefixlen 64  scopeid 0x20<link>
+        ether e2:b0:23:79:e1:f1  txqueuelen 0  (以太网)
+        RX packets 3  bytes 126 (126.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 14029  bytes 2840427 (2.8 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth97a3690: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::8c2:45ff:fefc:580b  prefixlen 64  scopeid 0x20<link>
+        ether 0a:c2:45:fc:58:0b  txqueuelen 0  (以太网)
+        RX packets 3  bytes 126 (126.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 6495  bytes 1344436 (1.3 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vethd704ad4: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::c817:f6ff:fe35:5f49  prefixlen 64  scopeid 0x20<link>
+        ether ca:17:f6:35:5f:49  txqueuelen 0  (以太网)
+        RX packets 3  bytes 126 (126.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 22006  bytes 4603532 (4.6 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vethf76b75e: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::1cf6:77ff:fe08:3b2e  prefixlen 64  scopeid 0x20<link>
+        ether 1e:f6:77:08:3b:2e  txqueuelen 0  (以太网)
+        RX packets 3  bytes 126 (126.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 23297  bytes 4839030 (4.8 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0

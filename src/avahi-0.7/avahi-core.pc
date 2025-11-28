@@ -1,0 +1,10 @@
+prefix=/home/sunxilong/work/mycode/my_avahi_v3/install
+exec_prefix=${prefix}
+libdir=/home/sunxilong/work/mycode/my_avahi_v3/install/lib
+includedir=${prefix}/include
+
+Name: avahi-core
+Description: Avahi Multicast DNS Responder (Embeddable Stack)
+Version: 0.7
+Libs: -L${libdir} -lavahi-common -lavahi-core
+Cflags: -D_REENTRANT -I${includedir}

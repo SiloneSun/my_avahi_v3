@@ -1,0 +1,11 @@
+prefix=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libmd
+Description: Message Digest functions from BSD systems
+Version: 1.0.4
+URL: https://www.hadrons.org/software/libmd/
+Libs: -L${libdir} -lmd
+Cflags: -I${includedir}

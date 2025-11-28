@@ -1,0 +1,12 @@
+prefix=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+gmodule_supported=true
+
+Name: GModule
+Description: Dynamic module loader for GLib
+Version: 2.66.7
+Requires: gmodule-no-export-2.0, glib-2.0
+Libs: -Wl,--export-dynamic
+Cflags: -I${includedir}
