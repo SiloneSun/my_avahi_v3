@@ -53,16 +53,19 @@ echo "【3/4】配置交叉编译环境..."
 cd "${DBUS_DIR}"
 
 # 替换旧的config.sub/config.guess（仅首次执行）
-if [ ! -f "config.sub.bak" ]; then
-  echo "📥 下载适配的config文件（仅首次执行）..."
-  cp config.sub config.sub.bak
-  cp config.guess config.guess.bak
-  wget -O config.sub "https://git.savannah.gnu.org/cgit/config.git/plain/config.sub" || exit 1
-  wget -O config.guess "https://git.savannah.gnu.org/cgit/config.git/plain/config.guess" || exit 1
-  chmod +x config.sub config.guess
-else
-  echo "✅ 已存在适配的config文件，跳过下载"
-fi
+# if [ ! -f "config.sub.bak" ]; then
+#   echo "📥 下载适配的config文件（仅首次执行）..."
+#   cp config.sub config.sub.bak
+#   cp config.guess config.guess.bak
+#   wget -O config.sub "https://git.savannah.gnu.org/cgit/config.git/plain/config.sub" || exit 1
+#   wget -O config.guess "https://git.savannah.gnu.org/cgit/config.git/plain/config.guess" || exit 1
+#   chmod +x config.sub config.guess
+# else
+#   echo "✅ 已存在适配的config文件，跳过下载"
+# fi
+cp /home/sunxilong/work/mycode/my_avahi_v3/config.sub .
+cp /home/sunxilong/work/mycode/my_avahi_v3/config.guess .
+chmod +x config.sub config.guess
 
 # 导出交叉编译环境变量
 export ac_cv_prog_cc_works="yes"
@@ -81,7 +84,8 @@ echo "【4/4】编译安装DBus-${DBUS_VER}..."
   --build="${BUILD_ARCH}" \
   --host="${HOST_ARCH}" \
   --target="${HOST_ARCH}" \
-  --prefix="${DEP_INSTALL}" \
+  --prefix="/customer" \
+  --sysconfdir=/customer/etc \
   --disable-shared \
   --enable-static \
   --disable-tests \
@@ -101,7 +105,8 @@ echo "【4/4】编译安装DBus-${DBUS_VER}..."
   LDFLAGS="-static" || exit 1
 
 make -j$(nproc) || exit 1
-make install || exit 1
+mkdir -p $PWD/staging
+make DESTDIR=$PWD/staging install || exit 1  # 重点是这里，指定安装目录，避免污染宿主机环境；从staging目录下拷贝到最终运行的环境（板端）
 
 
 # -------------------------- 完成提示 --------------------------
