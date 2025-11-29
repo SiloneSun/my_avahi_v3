@@ -8,7 +8,7 @@ HOST_ARCH="arm-linux-gnueabihf"
 BUILD_ARCH="x86_64-pc-linux-gnu"
 DEP_INSTALL="/home/sunxilong/work/mycode/my_avahi_v3/dependence/install"
 AVAHI_SRC_DIR="/home/sunxilong/work/mycode/my_avahi_v3/src"
-AVAHI_INSTALL_DIR="/home/sunxilong/work/mycode/my_avahi_v3/install"
+AVAHI_INSTALL_DIR="/home/sunxilong/work/mycode/my_avahi_v3/src/avahi-0.7/staging"
 AVAHI_VER="0.7"
 AVAHI_DIR="${AVAHI_SRC_DIR}/avahi-${AVAHI_VER}"
 CONFIG_FILE_DIR="/home/sunxilong/work/mycode/my_avahi_v3"
@@ -78,7 +78,7 @@ RANLIB_FULL="${TOOLCHAIN}/arm-linux-gnueabihf-ranlib"
 LD_FULL="${TOOLCHAIN}/arm-linux-gnueabihf-ld"
 
 # 简化configure命令（关键参数不换行，避免截断）
-${AVAHI_DIR}/configure --build="${BUILD_ARCH}" --host="${HOST_ARCH}" --target="${HOST_ARCH}" --prefix="${AVAHI_INSTALL_DIR}" --with-distro=none \
+${AVAHI_DIR}/configure --build="${BUILD_ARCH}" --host="${HOST_ARCH}" --target="${HOST_ARCH}" --prefix="/customer" --sysconfdir=/customer/etc --with-distro=none \
   --disable-qt3 --disable-qt4 --without-qt3 --without-qt4 --disable-avahi-ui --disable-gtk --disable-gtk2 --disable-gtk3 --without-x \
   --enable-dbus --with-dbus-sysconf-dir="${DEP_INSTALL}/etc/dbus-1/system.d" --with-dbus-service-dir="${DEP_INSTALL}/share/dbus-1/services" \
   --enable-static --disable-shared --disable-dependency-tracking --without-sysroot --disable-runpath \
@@ -106,8 +106,9 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+mkdir -p $PWD/staging
 # 安装（指定DESTDIR可避免权限问题，若安装目录有写入权限可直接make install）
-make install DESTDIR=""  # DESTDIR为空时直接安装到--prefix指定的目录
+make install DESTDIR="$PWD/staging"  # DESTDIR为空时直接安装到--prefix指定的目录
 if [ $? -ne 0 ]; then
   echo -e "\n❌ avahi安装失败！"
   echo "  解决方案："
@@ -115,6 +116,12 @@ if [ $? -ne 0 ]; then
   echo "  2. 用sudo执行build.sh（仅安装阶段需要root权限）"
   exit 1
 fi
+
+cd $PWD/staging
+ls -trlh
+
+tar -zcvf avahi.tar.gz ./customer
+cp avahi.tar.gz ~/work/tftp/
 
 # -------------------------- 完成提示（修正核心修正说明，避免误解） --------------------------
 echo -e "\n======================================"
@@ -137,3 +144,6 @@ echo -e "  1. 启动DBus：${DEP_INSTALL}/sbin/dbus-daemon --system --fork --con
 echo -e "  2. 启动avahi：${AVAHI_INSTALL_DIR}/sbin/avahi-daemon -D"
 echo -e "  3. 验证：${AVAHI_INSTALL_DIR}/sbin/avahi-daemon --check（无报错则正常）"
 echo -e "======================================"
+
+
+md5sum ${AVAHI_INSTALL_DIR}/customer/sbin/avahi-daemon
