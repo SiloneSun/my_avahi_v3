@@ -394,7 +394,7 @@ BUILD_FILEVERSION =
 BUILD_TIMESTAMP = 
 CC = /home/sunxilong/work/disk4T/code/sxw0505/tools/gcc-11.1.0-20210608-sigmastar-glibc-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -fno-strict-aliasing -fno-common -Wnested-externs -Wmissing-prototypes -Wstrict-prototypes -Wdeclaration-after-statement -Wimplicit-function-declaration -Wold-style-definition -Wjump-misses-init -Wall -Wextra -Wundef -Wwrite-strings -Wpointer-arith -Wmissing-declarations -Wredundant-decls -Wno-unused-parameter -Wno-missing-field-initializers -Wformat=2 -Wcast-align -Wformat-nonliteral -Wformat-security -Wsign-compare -Wstrict-aliasing -Wshadow -Winline -Wpacked -Wmissing-format-attribute -Wmissing-noreturn -Winit-self -Wmissing-include-dirs -Wunused-but-set-variable -Warray-bounds -Wreturn-type -Wswitch-enum -Wswitch-default -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict -Wnull-dereference -Wdouble-promotion -Wchar-subscripts -Wfloat-equal -Wpointer-sign -Wno-deprecated-declarations -Wno-cast-function-type -Wno-unused-label -Wno-error=unused-parameter -Wno-error=missing-field-initializers -Wno-error=deprecated-declarations -Wno-error=cast-function-type -Wno-error=unused-label -fPIC -Os
+CFLAGS = -fno-strict-aliasing -fno-common -Wnested-externs -Wmissing-prototypes -Wstrict-prototypes -Wdeclaration-after-statement -Wimplicit-function-declaration -Wold-style-definition -Wjump-misses-init -Wall -Wextra -Wundef -Wwrite-strings -Wpointer-arith -Wmissing-declarations -Wredundant-decls -Wno-unused-parameter -Wno-missing-field-initializers -Wformat=2 -Wcast-align -Wformat-nonliteral -Wformat-security -Wsign-compare -Wstrict-aliasing -Wshadow -Winline -Wpacked -Wmissing-format-attribute -Wmissing-noreturn -Winit-self -Wmissing-include-dirs -Wunused-but-set-variable -Warray-bounds -Wreturn-type -Wswitch-enum -Wswitch-default -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict -Wnull-dereference -Wdouble-promotion -Wchar-subscripts -Wfloat-equal -Wpointer-sign -Wno-deprecated-declarations -Wno-cast-function-type -Wno-unused-label -Wno-error=unused-parameter -Wno-error=missing-field-initializers -Wno-error=deprecated-declarations -Wno-error=cast-function-type -Wno-error=unused-label 
 CFLAG_VISIBILITY = -fvisibility=hidden
 CODE_COVERAGE_CFLAGS = 
 CODE_COVERAGE_CPPFLAGS = 
@@ -408,28 +408,28 @@ CXXCPP = /home/sunxilong/work/disk4T/code/sxw0505/tools/gcc-11.1.0-20210608-sigm
 CXXDEPMODE = depmode=gcc3
 CXXFLAGS = -fno-strict-aliasing -Wall -Wextra -Wundef -Wwrite-strings -Wpointer-arith -Wmissing-declarations -Wredundant-decls -Wno-unused-parameter -Wno-missing-field-initializers -Wformat=2 -Wcast-align -Wformat-nonliteral -Wformat-security -Wsign-compare -Wstrict-aliasing -Wshadow -Winline -Wpacked -Wmissing-format-attribute -Wmissing-noreturn -Winit-self -Wmissing-include-dirs -Wunused-but-set-variable -Warray-bounds -Wreturn-type -Wno-overloaded-virtual -Wswitch-enum -Wswitch-default -Wchar-subscripts -Wfloat-equal -Wno-deprecated-declarations -Wno-cast-function-type -Wno-unused-label -Wno-error=unused-parameter -Wno-error=missing-field-initializers -Wno-error=overloaded-virtual -Wno-error=deprecated-declarations -Wno-error=cast-function-type -Wno-error=unused-label 
 CYGPATH_W = echo
-DATADIR_FROM_PKGSYSCONFDIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/share
-DBUS_BINDIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/bin
+DATADIR_FROM_PKGSYSCONFDIR = /customer/share
+DBUS_BINDIR = /customer/bin
 DBUS_CONSOLE_OWNER_FILE = 
-DBUS_DAEMONDIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/bin
-DBUS_DATADIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/share
+DBUS_DAEMONDIR = /customer/bin
+DBUS_DATADIR = /customer/share
 DBUS_INT16_TYPE = short
 DBUS_INT32_TYPE = int
 DBUS_INT64_CONSTANT = (val##LL)
 DBUS_INT64_TYPE = long long
-DBUS_LIBEXECDIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/libexec
+DBUS_LIBEXECDIR = /customer/libexec
 DBUS_MAJOR_VERSION = 1
 DBUS_MICRO_VERSION = 20
 DBUS_MINOR_VERSION = 12
-DBUS_PREFIX = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install
+DBUS_PREFIX = /customer
 DBUS_SESSION_BUS_CONNECT_ADDRESS = autolaunch:
 DBUS_SESSION_BUS_LISTEN_ADDRESS = unix:tmpdir=/tmp
 DBUS_SESSION_CONF_MAYBE_AUTH_EXTERNAL = <auth>EXTERNAL</auth>
 DBUS_SESSION_SOCKET_DIR = /tmp
 DBUS_STATIC_BUILD_CPPFLAGS = -DDBUS_STATIC_BUILD
-DBUS_SYSTEM_BUS_DEFAULT_ADDRESS = unix:path=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/var/run/dbus/system_bus_socket
-DBUS_SYSTEM_PID_FILE = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/var/run/dbus/pid
-DBUS_SYSTEM_SOCKET = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/var/run/dbus/system_bus_socket
+DBUS_SYSTEM_BUS_DEFAULT_ADDRESS = unix:path=/customer/var/run/dbus/system_bus_socket
+DBUS_SYSTEM_PID_FILE = /customer/var/run/dbus/pid
+DBUS_SYSTEM_SOCKET = /customer/var/run/dbus/system_bus_socket
 DBUS_TEST_DATA = /home/sunxilong/work/mycode/my_avahi_v3/dependence/src/dbus-1.12.20/test/data
 DBUS_TEST_EXEC = /home/sunxilong/work/mycode/my_avahi_v3/dependence/src/dbus-1.12.20/test
 DBUS_TEST_USER = nobody
@@ -450,14 +450,14 @@ ECHO_N = -n
 ECHO_T = 
 EGREP = /usr/bin/grep -E
 EXEEXT = 
-EXPANDED_BINDIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/bin
-EXPANDED_DATADIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/share
-EXPANDED_LIBDIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/lib
-EXPANDED_LIBEXECDIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/libexec
-EXPANDED_LOCALSTATEDIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/var
-EXPANDED_PREFIX = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install
-EXPANDED_RUNSTATEDIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/var/run
-EXPANDED_SYSCONFDIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/etc
+EXPANDED_BINDIR = /customer/bin
+EXPANDED_DATADIR = /customer/share
+EXPANDED_LIBDIR = /customer/lib
+EXPANDED_LIBEXECDIR = /customer/libexec
+EXPANDED_LOCALSTATEDIR = /customer/var
+EXPANDED_PREFIX = /customer
+EXPANDED_RUNSTATEDIR = /customer/var/run
+EXPANDED_SYSCONFDIR = /customer/etc
 EXPAT_CFLAGS = -I/home/sunxilong/avahi-cross-build/install/include
 EXPAT_LIBS = -L/home/sunxilong/avahi-cross-build/install/lib -lexpat
 EXTRA_CFLAGS = -fno-strict-aliasing -fno-common -Wnested-externs -Wmissing-prototypes -Wstrict-prototypes -Wdeclaration-after-statement -Wimplicit-function-declaration -Wold-style-definition -Wjump-misses-init -Wall -Wextra -Wundef -Wwrite-strings -Wpointer-arith -Wmissing-declarations -Wredundant-decls -Wno-unused-parameter -Wno-missing-field-initializers -Wformat=2 -Wcast-align -Wformat-nonliteral -Wformat-security -Wsign-compare -Wstrict-aliasing -Wshadow -Winline -Wpacked -Wmissing-format-attribute -Wmissing-noreturn -Winit-self -Wmissing-include-dirs -Wunused-but-set-variable -Warray-bounds -Wreturn-type -Wswitch-enum -Wswitch-default -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict -Wnull-dereference -Wdouble-promotion -Wchar-subscripts -Wfloat-equal -Wpointer-sign -Wno-deprecated-declarations -Wno-cast-function-type -Wno-unused-label -Wno-error=unused-parameter -Wno-error=missing-field-initializers -Wno-error=deprecated-declarations -Wno-error=cast-function-type -Wno-error=unused-label
@@ -482,7 +482,7 @@ LAUNCHCTL =
 LAUNCHD_AGENT_DIR = /Library/LaunchAgents
 LCOV = 
 LD = /home/sunxilong/work/disk4T/code/sxw0505/tools/gcc-11.1.0-20210608-sigmastar-glibc-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/bin/ld
-LDFLAGS = -Wl,--no-as-needed -static
+LDFLAGS = -Wl,--no-as-needed 
 LIBDBUS_LIBS = -lpthread    
 LIBOBJS = 
 LIBS = 
@@ -529,7 +529,7 @@ SET_MAKE =
 SHELL = /bin/bash
 SOVERSION = 3
 STRIP = arm-linux-gnueabihf-strip
-SYSCONFDIR_FROM_PKGDATADIR = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/etc
+SYSCONFDIR_FROM_PKGDATADIR = /customer/etc
 SYSTEMCTL = /usr/bin/systemctl
 SYSTEMD_CFLAGS = 
 SYSTEMD_LIBS = 
@@ -600,7 +600,7 @@ pdfdir = ${docdir}
 pkgconfig_prefix = ${original_prefix}
 pkgpyexecdir = ${pyexecdir}/dbus
 pkgpythondir = ${pythondir}/dbus
-prefix = /home/sunxilong/work/mycode/my_avahi_v3/dependence/install
+prefix = /customer
 program_transform_name = s,x,x,
 psdir = ${docdir}
 pyexecdir = ${exec_prefix}/lib/python2.7/site-packages
@@ -609,7 +609,7 @@ runstatedir = ${localstatedir}/run
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
-sysconfdir = ${prefix}/etc
+sysconfdir = /customer/etc
 systemdsystemunitdir = 
 systemduserunitdir = ${libdir}/systemd/user
 target_alias = arm-linux-gnueabihf

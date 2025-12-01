@@ -53,9 +53,9 @@ per-user-login-session message bus (started each time a user logs in).
 a different configuration file.</para>
 
 <para>The --session option is equivalent to
-"--config-file=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/share/dbus-1/session.conf" and the --system
+"--config-file=/customer/share/dbus-1/session.conf" and the --system
 option is equivalent to
-"--config-file=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/share/dbus-1/system.conf". By creating
+"--config-file=/customer/share/dbus-1/system.conf". By creating
 additional configuration files and using the --config-file option,
 additional special-purpose message bus daemons could be created.</para>
 
@@ -216,10 +216,10 @@ specification and its backward compatibility is not guaranteed; this
 document is documentation, not specification.</para>
 
 <para>The standard systemwide and per-session message bus setups are
-configured in the files "/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/share/dbus-1/system.conf" and
-"/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/share/dbus-1/session.conf".  These files normally
+configured in the files "/customer/share/dbus-1/system.conf" and
+"/customer/share/dbus-1/session.conf".  These files normally
 &lt;include&gt; a system-local.conf or session-local.conf in
-/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/etc/dbus-1; you can put local
+/customer/etc/dbus-1; you can put local
 overrides in those files to avoid modifying the primary configuration
 files.</para>
 
@@ -306,8 +306,8 @@ Only files ending in ".conf" are included.</para>
 <para>This is intended to allow extension of the system bus by particular
 packages. For example, if CUPS wants to be able to send out
 notification of printer queue changes, it could install a file to
-/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/share/dbus-1/system.d or
-/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/etc/dbus-1/system.d that allowed all apps to receive
+/customer/share/dbus-1/system.d or
+/customer/etc/dbus-1/system.d that allowed all apps to receive
 this message and allowed the printer daemon user to send it.</para>
 
 <itemizedlist remap='TP'>
@@ -670,7 +670,7 @@ otherwise try your favorite search engine.</para>
 
 <para>The &lt;standard_session_servicedirs/&gt; option is only relevant to the
 per-user-session bus daemon defined in
-/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/etc/dbus-1/session.conf. Putting it in any other
+/customer/etc/dbus-1/session.conf. Putting it in any other
 configuration file would probably be nonsense.</para>
 
 <itemizedlist remap='TP'>
@@ -731,7 +731,7 @@ configuration file would probably be nonsense.</para>
 
 <para>The &lt;standard_system_servicedirs/&gt; option is only relevant to the
 per-system bus daemon defined in
-/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/share/dbus-1/system.conf. Putting it in any other
+/customer/share/dbus-1/system.conf. Putting it in any other
 configuration file would probably be nonsense.</para>
 
 <itemizedlist remap='TP'>
@@ -747,7 +747,7 @@ the dbus-daemon-launch-helper executable in located in libexec.</para>
 
 
 <para>The &lt;servicehelper/&gt; option is only relevant to the per-system bus daemon
-defined in /home/sunxilong/work/mycode/my_avahi_v3/dependence/install/share/dbus-1/system.conf. Putting it in any other
+defined in /customer/share/dbus-1/system.conf. Putting it in any other
 configuration file would probably be nonsense.</para>
 
 <itemizedlist remap='TP'>

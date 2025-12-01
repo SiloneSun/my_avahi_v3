@@ -2,4 +2,4 @@
 Description=D-Bus System Message Bus Socket
 
 [Socket]
-ListenStream=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/var/run/dbus/system_bus_socket
+ListenStream=/customer/var/run/dbus/system_bus_socket

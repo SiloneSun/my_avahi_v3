@@ -108,7 +108,10 @@ make -j$(nproc) || exit 1
 mkdir -p $PWD/staging
 make DESTDIR=$PWD/staging install || exit 1  # 重点是这里，指定安装目录，避免污染宿主机环境；从staging目录下拷贝到最终运行的环境（板端）
 
-
+cd $PWD/staging
+tar -zcvf dbus.tar.gz ./customer
+cp dbus.tar.gz ~/work/tftp/
+copy_file ./customer/bin/dbus-daemon ~/work/tftp/
 # -------------------------- 完成提示 --------------------------
 echo -e "\n======================================"
 echo "🎉 DBus-${DBUS_VER} 编译安装完成！"

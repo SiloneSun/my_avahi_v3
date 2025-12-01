@@ -4,6 +4,6 @@ Documentation=man:dbus-daemon(1)
 Requires=dbus.socket
 
 [Service]
-ExecStart=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
-ExecReload=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/bin/dbus-send --print-reply --system --type=method_call --dest=org.freedesktop.DBus / org.freedesktop.DBus.ReloadConfig
+ExecStart=/customer/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+ExecReload=/customer/bin/dbus-send --print-reply --system --type=method_call --dest=org.freedesktop.DBus / org.freedesktop.DBus.ReloadConfig
 OOMScoreAdjust=-900

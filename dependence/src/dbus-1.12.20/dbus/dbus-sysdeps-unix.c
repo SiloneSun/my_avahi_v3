@@ -2517,12 +2517,43 @@ fill_user_info (DBusUserInfo       *info,
       }
     else
       {
+        #if 0
         dbus_set_error (error, _dbus_error_from_errno (errno),
                         "User \"%s\" unknown or no memory to allocate password entry\n",
                         username_c ? username_c : "???");
         _dbus_verbose ("User %s unknown\n", username_c ? username_c : "???");
         dbus_free (buf);
+        _dbus_warn("%s %d", __FILE__, __LINE__);
         return FALSE;
+        #else
+          /* Special fallback for UID=0 (root) in minimal systems */
+        if (uid == 0)
+          {
+            _dbus_verbose ("Falling back to built-in root user info for UID 0\n");
+
+            info->uid = 0;
+            info->primary_gid = 0;
+            info->username = _dbus_strdup ("root");
+            info->homedir = _dbus_strdup ("/home/root");  // match your passwd
+            _dbus_warn("%s %d", __FILE__, __LINE__);
+
+            if (!info->username || !info->homedir)
+              {
+                dbus_set_error (error, DBUS_ERROR_NO_MEMORY, NULL);
+                return FALSE;
+              }
+            _dbus_warn("%s %d", __FILE__, __LINE__);
+
+            goto setup_groups;  // 跳过错误处理，继续初始化组信息
+          }
+
+        // 对于其他 UID，仍按原逻辑报错
+        dbus_set_error (error, _dbus_error_from_errno (errno),
+                        "User \"%s\" unknown or no memory to allocate password entry\n",
+                        username_c ? username_c : "???");
+        _dbus_verbose ("User %s unknown\n", username_c ? username_c : "???");
+        return FALSE;
+        #endif
       }
   }
 #else /* ! HAVE_GETPWNAM_R */
@@ -2544,6 +2575,30 @@ fill_user_info (DBusUserInfo       *info,
       }
     else
       {
+        _dbus_warn("%s %d", __FILE__, __LINE__);
+        /* Special fallback for UID=0 (root) in minimal systems */
+        if (uid == 0)
+          {
+            _dbus_warn ("Falling back to built-in root user info for UID 0\n");
+
+            /* Fill minimal user info manually */
+            info->uid = 0;
+            info->primary_gid = 0;
+            info->username = _dbus_strdup ("root");
+            info->homedir = _dbus_strdup ("/home/root");  // match your /etc/passwd
+
+            if (!info->username || !info->homedir)
+              {
+                dbus_set_error (error, DBUS_ERROR_NO_MEMORY, NULL);
+                _dbus_warn("%s %d", __FILE__, __LINE__);
+                return FALSE;
+              }
+
+            /* Skip group lookup if you don't need it */
+            goto skip_group_setup;
+          }
+
+        /* For non-root UIDs, fail as usual */
         dbus_set_error (error, _dbus_error_from_errno (errno),
                         "User \"%s\" unknown or no memory to allocate password entry\n",
                         username_c ? username_c : "???");
@@ -2554,6 +2609,8 @@ fill_user_info (DBusUserInfo       *info,
 #endif  /* ! HAVE_GETPWNAM_R */
 
   /* Fill this in so we can use it to get groups */
+setup_groups:
+skip_group_setup:
   username_c = info->username;
 
 #ifdef HAVE_GETGROUPLIST

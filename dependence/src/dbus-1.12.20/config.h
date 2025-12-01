@@ -5,7 +5,7 @@
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
 /* Directory for installing the binaries */
-#define DBUS_BINDIR "/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/bin"
+#define DBUS_BINDIR "/customer/bin"
 
 /* Define to build X11 functionality */
 /* #undef DBUS_BUILD_X11 */
@@ -30,13 +30,13 @@
 /* #undef DBUS_CYGWIN */
 
 /* Directory for installing the DBUS daemon */
-#define DBUS_DAEMONDIR "/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/bin"
+#define DBUS_DAEMONDIR "/customer/bin"
 
 /* Name of executable */
 #define DBUS_DAEMON_NAME "dbus-daemon"
 
 /* Directory for installing DBUS data files */
-#define DBUS_DATADIR "/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/share"
+#define DBUS_DATADIR "/customer/share"
 
 /* Disable assertion checking */
 #define DBUS_DISABLE_ASSERT 1
@@ -72,10 +72,10 @@
 #define DBUS_HAVE_LINUX_EPOLL 1
 
 /* Directory for installing the libexec binaries */
-#define DBUS_LIBEXECDIR "/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/libexec"
+#define DBUS_LIBEXECDIR "/customer/libexec"
 
 /* Prefix for installing DBUS */
-#define DBUS_PREFIX "/home/sunxilong/work/mycode/my_avahi_v3/dependence/install"
+#define DBUS_PREFIX "/customer"
 
 /* Fallback address for session bus clients */
 #define DBUS_SESSION_BUS_CONNECT_ADDRESS "autolaunch:"
@@ -84,10 +84,10 @@
 #define DBUS_SESSION_SOCKET_DIR "/tmp"
 
 /* The default D-Bus address of the system bus */
-#define DBUS_SYSTEM_BUS_DEFAULT_ADDRESS "unix:path=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/var/run/dbus/system_bus_socket"
+#define DBUS_SYSTEM_BUS_DEFAULT_ADDRESS "unix:path=/customer/var/run/dbus/system_bus_socket"
 
 /* The name of the socket the system bus listens on by default */
-#define DBUS_SYSTEM_SOCKET "/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/var/run/dbus/system_bus_socket"
+#define DBUS_SYSTEM_SOCKET "/customer/var/run/dbus/system_bus_socket"
 
 /* Full path to the launch helper test program in the builddir */
 #define DBUS_TEST_LAUNCH_HELPER_BINARY "/home/sunxilong/work/mycode/my_avahi_v3/dependence/src/dbus-1.12.20/bus/dbus-daemon-launch-helper-test"

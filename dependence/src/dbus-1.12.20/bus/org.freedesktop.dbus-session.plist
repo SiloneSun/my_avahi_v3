@@ -16,7 +16,7 @@
 
 	<key>ProgramArguments</key>
 	<array>
-		<string>/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/bin/dbus-daemon</string>
+		<string>/customer/bin/dbus-daemon</string>
 		<string>--nofork</string>
 		<string>--session</string>
 	</array>

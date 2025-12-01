@@ -3,10 +3,10 @@ abs_top_srcdir=/home/sunxilong/work/mycode/my_avahi_v3/dependence/src/dbus-1.12.
 prefix=
 exec_prefix=
 bindir=${exec_prefix}/bin
-system_bus_default_address=unix:path=/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/var/run/dbus/system_bus_socket
+system_bus_default_address=unix:path=/customer/var/run/dbus/system_bus_socket
 datarootdir=${prefix}/share
 datadir=${datarootdir}
-sysconfdir=${prefix}/etc
+sysconfdir=/customer/etc
 session_bus_services_dir=${datadir}/dbus-1/services
 system_bus_services_dir=${datadir}/dbus-1/system-services
 interfaces_dir=${datadir}/dbus-1/interfaces

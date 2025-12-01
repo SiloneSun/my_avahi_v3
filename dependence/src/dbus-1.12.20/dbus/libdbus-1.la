@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/sunxilong/work/mycode/my_avahi_v3/dependence/install/lib'
+libdir='/customer/lib'
